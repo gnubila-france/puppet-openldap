@@ -45,7 +45,7 @@ Puppet::Type.
   def self.prefetch(resources)
     items = instances
     resources.keys.each do |name|
-      if provider = items.find{ |item| item.name.downcase == name.downcase }
+      if provider = items.find{ |item| item.name == name }
         resources[name].provider = provider
       end
     end
