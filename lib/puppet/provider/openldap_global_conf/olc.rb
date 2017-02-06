@@ -111,7 +111,7 @@ Puppet::Type.
     if resource[:value].is_a? Hash
       instances = self.class.instances
       values = resource[:value].map do |k, v|
-        found = instances.find { |item| item.name == k }
+        found = instances.find { |item| item.name.downcase == k.downcase }
         [ k, found.get(:value) ] unless found.nil?
       end
       Hash[values]
